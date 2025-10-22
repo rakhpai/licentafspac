@@ -178,6 +178,75 @@ python tools/publish_to_docs.py \
 
 ---
 
+### 5. Publish Markdown with FULL Formatting (RECOMMENDED)
+**Script:** `tools/publish_markdown_formatted.py`
+
+**NEW!** Convert Markdown to Google Docs with complete formatting preserved:
+- ✅ Headings (H1-H6) styled correctly
+- ✅ Lists (bullet and numbered)
+- ✅ Bold and italic text
+- ✅ Links (clickable)
+- ✅ Tables formatted
+- ✅ Creates document DIRECTLY in Shared Drive (bypasses quota issues)
+
+**Usage:**
+```bash
+# Publish thesis overview with full formatting
+python tools/publish_markdown_formatted.py \
+  --file PROJECT_OVERVIEW.md \
+  --title "Lucrare de Licență - Overview" \
+  --folder-id 0APsOGraGUhOQUk9PVA \
+  --share robert@antal.me
+
+# Publish chapter to Shared Drive
+python tools/publish_markdown_formatted.py \
+  --file chapter1.md \
+  --title "Capitol 1: Introducere" \
+  --folder-id 0APsOGraGUhOQUk9PVA \
+  --share supervisor@univ.ro \
+  --role commenter
+```
+
+**Parameters:**
+- `--file`: Markdown file to convert
+- `--title`: Title for Google Doc (optional, defaults to filename)
+- `--folder-id`: **REQUIRED** - Shared Drive ID where document will be created
+- `--share`: Email to share with (optional)
+- `--role`: Permission level: reader, commenter, or writer (default: writer)
+
+**Features:**
+- Parses Markdown syntax automatically
+- Applies Google Docs formatting (headings, lists, etc.)
+- Creates document directly in Shared Drive (no quota issues)
+- Auto-shares with specified email
+- Professional formatting for thesis chapters
+
+**Output:**
+```
+✅ SUCCESS!
+📄 Document: Lucrare de Licență - Overview
+🔗 URL: https://docs.google.com/document/d/[ID]/edit
+📁 ID: 1_5LJRbmPr-IZSXxDknMY4Me8gSeUozaoGU_8VoV4C3U
+
+📊 Formatting applied:
+   ✓ Headings (H1-H6)
+   ✓ Lists (bullet and numbered)
+   ✓ Basic text styling
+```
+
+**Why use this instead of plain upload?**
+- ✅ Headings appear in Document Outline (easy navigation)
+- ✅ Lists are properly formatted (not plain text)
+- ✅ Professional appearance for supervisor review
+- ✅ Easier to read and review
+- ✅ No manual formatting needed
+
+**Requirements:**
+- Shared Drive ID (must have access)
+- Service account with Drive & Docs API access
+
+---
+
 ## 🔐 Security Best Practices
 
 ### ✅ DO:
