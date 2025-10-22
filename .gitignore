@@ -1,0 +1,249 @@
+# Gitignore pentru Lucrarea de Licență - AI în Agenții
+
+# ============================================
+# SENSITIVE DATA - NEVER COMMIT
+# ============================================
+
+# Interviuri & Transcrieri (conțin date personale)
+**/04_data_collection/interviews_transcribed/
+**/04_data_collection/audio_recordings/
+**/04_data_collection/consent_forms_signed/
+
+# Date campanii (proprietate agenții, confidențiale)
+**/04_data_collection/campaign_data/
+**/04_data_collection/performance_metrics/
+*_data.xlsx
+*_campaigns.csv
+
+# Date chestionare (răspunsuri individuale, GDPR)
+*_responses.csv
+*_responses.xlsx
+*.sav  # SPSS files cu date individuale
+questionnaire_raw_data*
+
+# Informații participanți (email-uri, nume)
+participants_list*
+contact_info*
+recruitment*
+
+# NDA-uri & Documente Legale (cu semnături)
+**/nda_signed/
+**/contracts/
+
+# Credentiale & API Keys
+.env
+credentials.json
+api_keys.txt
+passwords.txt
+
+# ============================================
+# WORKSPACE & TEMPORARY FILES
+# ============================================
+
+# Microsoft Office Temporary Files
+~$*.doc*
+~$*.xls*
+~$*.ppt*
+.~lock.*
+
+# Auto-save & Backup Files
+*.tmp
+*.bak
+*~
+*.swp
+*.swo
+*.autosave
+*_backup_*
+*_old*
+*_BACKUP*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ============================================
+# LARGE BINARY FILES
+# ============================================
+
+# Large PDFs (keep originals local, not în git)
+# Allow small PDFs (guides, etc.) but exclude large literature
+/sources/*_large.pdf
+/sources/books/
+
+# Audio/Video Files
+*.mp3
+*.mp4
+*.wav
+*.mov
+*.avi
+*.m4a
+
+# Large images (screenshots, raw photos)
+*.psd
+*.ai
+*.indd
+/images/raw/
+/images/originals/
+
+# ============================================
+# ANALYSIS SOFTWARE FILES
+# ============================================
+
+# SPSS
+*.spo  # SPSS output files (large)
+*.spv  # SPSS viewer files
+# KEEP .sav syntax files for reproducibility (but NOT raw data .sav)
+# Explicitly exclude data .sav files above
+
+# NVivo / Atlas.ti
+*.nvp
+*.atlproj
+/nvivo_project/
+/atlas_project/
+
+# R / RStudio
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+venv/
+.venv/
+*.egg-info/
+
+# ============================================
+# ZOTERO
+# ============================================
+
+# Zotero database files (large, binary)
+# We export .bib regularly for git tracking
+/bibliography/zotero/
+storage/
+
+# Keep exported .bib for version control
+# Keep reading notes (.md files)
+
+# ============================================
+# NODE / WEB (if any)
+# ============================================
+
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm/
+
+# ============================================
+# IDEs
+# ============================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, WebStorm, etc.)
+.idea/
+*.iml
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# BUILD & OUTPUT (if applicable)
+# ============================================
+
+# LaTeX (if used)
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Compiled thesis (keep final PDFs separate, not în every commit)
+/final_thesis/builds/
+/final_thesis/*_draft_*.pdf
+# ALLOW final version:
+# !/final_thesis/Lucrare_Licenta_FINAL.pdf
+
+# ============================================
+# COMMENTS & NOTES
+# ============================================
+
+# Private notes (not for sharing/submission)
+**/private_notes/
+**/personal_thoughts.md
+diary.md
+todo_personal.md
+
+# Draft fragments (unorganized scraps)
+**/drafts/scraps/
+fragment_*.md
+
+# ============================================
+# EXCEPTIONS (! means DO commit these)
+# ============================================
+
+# DO commit template/example files (clearly marked as examples)
+!**/TEMPLATE_*
+!**/EXAMPLE_*
+
+# DO commit reading notes (bibliography/reading_notes/)
+!bibliography/reading_notes/*.md
+
+# DO commit codebooks (analysis structure)
+!**/codebook_*.xlsx
+!**/coding_framework_*.md
+
+# DO commit anonymous/aggregated data (if safe)
+!**/aggregated_results.csv
+!**/anonymous_summary.xlsx
+
+# DO commit analysis scripts (reproducibility)
+!**/*.R
+!**/*.py
+!**/*.syntax  # SPSS syntax
+
+# ============================================
+# CUSTOM RULES
+# ============================================
+
+# Add project-specific rules here as needed
+
+# If you create test/sample data files, clearly mark them
+**/sample_data/
+**/test_data/
+
+# Temp folders for various experiments
+/temp/
+/tmp/
+/scratch/
+
+# ============================================
+# END OF .GITIGNORE
+# ============================================
+
+# Last updated: 2024-10-22
+# Remember: When in doubt, DON'T commit (especially personal/sensitive data)!
+# You can always add files later, but you CAN'T easily remove them from git history!
+
