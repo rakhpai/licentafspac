@@ -21,7 +21,7 @@ from googleapiclient.http import MediaFileUpload
 
 load_dotenv()
 
-def publish_and_share_via_drive(file_path: str, share_email: str, doc_title: str = None, role: str = 'writer'):
+def publish_and_share_via_drive(file_path: str, share_email: str, doc_title: str = None, role: str = 'writer', folder_id: str = None):
     """
     Upload file to Google Drive as Google Doc and share.
 
@@ -30,6 +30,7 @@ def publish_and_share_via_drive(file_path: str, share_email: str, doc_title: str
         share_email: Email to share document with
         doc_title: Title for the Google Doc (default: filename)
         role: Permission role ('reader', 'commenter', 'writer')
+        folder_id: Google Drive folder ID to upload to (optional)
     """
     file_path = Path(file_path)
 
@@ -73,6 +74,10 @@ def publish_and_share_via_drive(file_path: str, share_email: str, doc_title: str
             'name': document_title,
             'mimeType': 'application/vnd.google-apps.document'
         }
+
+        if folder_id:
+            file_metadata['parents'] = [folder_id]
+            print(f"   ℹ️  Uploading to folder: {folder_id}")
 
         media = MediaFileUpload(
             str(file_path),
@@ -137,9 +142,10 @@ def main():
     parser.add_argument('--role', type=str, default='writer',
                         choices=['reader', 'commenter', 'writer'],
                         help="Permission role (default: writer)")
+    parser.add_argument('--folder-id', type=str, help="Google Drive folder ID to upload to")
 
     args = parser.parse_args()
-    publish_and_share_via_drive(args.file, args.email, args.title, args.role)
+    publish_and_share_via_drive(args.file, args.email, args.title, args.role, args.folder_id)
 
 if __name__ == "__main__":
     main()
